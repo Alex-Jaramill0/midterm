@@ -1,0 +1,450 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --header-height: 80px;
+}
+
+html {
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  background: black;
+  overflow-x: hidden;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/*-----------------------------Background-------------------------------------*/
+.view1 {
+  background-image: url("../images/wave.gif");
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: 100vw auto;
+  width: 100%;
+  margin-top: calc(-1 * var(--header-height));
+  padding-top: var(--header-height);
+  min-height: 100vh;
+  position: relative;
+  overflow: visible;
+}
+/*----------------------------------------------------------------------------*/
+
+/*---------------------------------Header-------------------------------------*/
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  padding: 0 2rem;
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* logo look */
+.logo {
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3.5rem;
+  color: #ffffff;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.28);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+  -webkit-filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+  transition: transform 180ms ease, text-shadow 180ms ease, filter 180ms ease;
+  transform-origin: left center;
+}
+
+.logo:hover {
+  transform: translateY(-4px) scale(1.02);
+  text-shadow: 0 6px 0 rgba(255, 255, 255, 0.05),
+    0 18px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* social icons shape */
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.social-links a {
+  padding: 0.45em;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.034);
+}
+
+.social-links a img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  object-fit: contain;
+}
+
+a img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* hover effects */
+.social-links a::before {
+  content: attr(data-social);
+  position: absolute;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 100px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  transform: translateY(30px) rotate(25deg);
+  opacity: 0;
+  transition: 200ms cubic-bezier(0.42, 0, 0.44, 1.68);
+}
+
+.social-links a::after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid var(--accent-color);
+  transform: translateY(0) rotate(25deg);
+  opacity: 0;
+  transition: 200ms cubic-bezier(0.42, 0, 0.44, 1.68);
+}
+
+.social-links a:hover {
+  background-color: var(--accent-color);
+}
+
+.social-links a:hover::before {
+  transform: translateY(65px) rotate(0);
+  opacity: 1;
+}
+
+.social-links a:hover::after {
+  transform: translateY(44px) rotate(0);
+  opacity: 1;
+}
+/*----------------------------------------------------------------------------*/
+
+/*------------------------------------Body------------------------------------*/
+body {
+  padding-top: var(--header-height);
+  overflow-x: hidden; /* clip any accidental horizontal overflow */
+}
+/*----------------------------------------------------------------------------*/
+
+/*------------------------------------Banner----------------------------------*/
+.scroller {
+  font-family: "Annie Use Your Telescope", cursive;
+  color: white;
+  overflow: visible;
+}
+
+.item {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.scroller .item:first-child h1 {
+  font-family: "Annie Use Your Telescope", cursive;
+  font-size: 3.25rem;
+  color: #fff;
+  text-shadow: 0 8px 28px rgb(234, 255, 40);
+  transform: translateY(20vh);
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  opacity: 0;
+  opacity: 0.45;
+  animation: pulseGlow 2.5s infinite ease-in-out;
+  will-change: opacity, filter, transform;
+}
+
+.scroller .item:nth-child(3) {
+  transform: translateZ(-100px) translateX(20vw) translateY(-6vh);
+  z-index: 11;
+}
+
+.scroller .item:nth-child(4) {
+  transform: translateZ(-120px) translateX(-20vw) translateY(-40vh);
+  z-index: 12;
+}
+
+.scroller .item:nth-child(5) {
+  transform: translateZ(-160px) translateX(12vw) translateY(-40vh);
+  z-index: 13;
+}
+.scroller .item:nth-child(5) img {
+  width: auto;
+  height: 70vh;
+  max-height: 70vh;
+  object-fit: cover;
+  object-position: center bottom;
+  margin: 0 auto;
+}
+
+.scroller .item:nth-child(6) {
+  transform: translateZ(-180px) translateX(-22vw) translateY(-40vh);
+  z-index: 14;
+}
+
+.scroller .item:nth-child(7) {
+  transform: translateZ(-200px) translateX(12vw) translateY(-55vh);
+  z-index: 13;
+}
+.scroller .item:nth-child(7) img {
+  width: auto;
+  height: 50vh; /* make it larger */
+  max-height: 50vh;
+  object-fit: cover;
+  object-position: center bottom;
+  margin: 0 auto;
+}
+
+.scroller .item:nth-child(8) {
+  transform: translateZ(-200px) translateX(15vw) translateY(-25vh);
+  z-index: 13;
+}
+.scroller .item:nth-child(8) img {
+  width: auto;
+  height: 80vh;
+  max-height: 80vh;
+  object-fit: cover;
+  object-position: center bottom;
+  margin: 0 auto;
+}
+
+.scroller .item:nth-child(9) {
+  transform: translateZ(-300px) translateY(0px);
+  z-index: 17;
+}
+.scroller .item:nth-child(9) img {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  object-fit: cover;
+  object-position: center flex-end;
+}
+
+.scroller .item:nth-child(10) {
+  transform: translateZ(-360px) translateY(984px);
+  z-index: 18;
+}
+
+.scroller .item:nth-child(11) {
+  transform: translateZ(-380px) translateY(984px);
+  z-index: 19;
+}
+
+.scroller .item:nth-child(10) img,
+.scroller .item:nth-child(11) img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: auto;
+  height: 90vh; /* increased size */
+  max-height: 90vh;
+  min-width: 100vw;
+  max-width: 100vw;
+  object-fit: fill; /* cover for fuller presence */
+  object-position: center bottom;
+  z-index: 14;
+  pointer-events: none;
+}
+
+.scroller .item:nth-child(12) {
+  transform: translateZ(-400px) translateY(360px);
+  z-index: 20;
+}
+.scroller .item:nth-child(12) {
+  pointer-events: auto;
+}
+.scroller .item:nth-child(12) .content {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+/*-----------------------------Content for the 12th Item-------------------------------*/
+/* Made the content inside the 12th item fill the item area and split evenly */
+.scroller .item:nth-child(12) .content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 15rem;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 0 0.7rem;
+}
+
+.scroller .item:nth-child(12) .content a {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.scroller .item:nth-child(12) .content a:nth-child(1) img {
+  width: auto;
+  height: 65vh;
+  max-height: 65vh;
+  object-fit: contain;
+}
+
+.scroller .item:nth-child(12) .content a:nth-child(1),
+.scroller .item:nth-child(12) .content a:nth-child(3) {
+  align-items: flex-end;
+}
+
+.scroller .item:nth-child(12) .content a:nth-child(2) {
+  align-self: center;
+  transform: translateX(-30px) translateY(-100px);
+}
+
+.scroller .item:nth-child(12) .content a:nth-child(3) img {
+  width: auto;
+  height: 24vh; /* reduced to 24% of viewport height */
+  max-height: 24vh;
+  object-fit: contain;
+  transform: translateY(8px);
+}
+
+/* -----------------------------Hover of Effects of Main Page------------------------------- */
+.scroller .item:nth-child(12) .content a {
+  position: relative;
+  transition: transform 160ms ease, box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+/*label part*/
+.scroller .item:nth-child(12) .content a::before {
+  content: attr(data-label);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 16px); /* place above the image */
+  transform: translateX(-50%) translateY(8px) rotate(6deg) scale(0.98);
+  background-color: rgb(144, 105, 206);
+  color: #fff;
+  padding: 0.6rem 0.9rem;
+  font-size: 1.1rem;
+  border-radius: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1), opacity 260ms ease;
+  box-shadow: 0 8px 24px rgba(144, 105, 206);
+  z-index: 20;
+}
+
+/*triangle part*/
+.scroller .item:nth-child(12) .content a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 6px);
+  transform: translateX(-50%) translateY(6px) rotate(6deg);
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 10px solid rgba(144, 105, 206);
+  opacity: 0;
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1), opacity 260ms ease;
+  z-index: 20;
+}
+
+/*how that shit moves*/
+.scroller .item:nth-child(12) .content a:hover {
+  transform: translateY(-8px) scale(1.03);
+  z-index: 50;
+}
+
+.scroller .item:nth-child(12) .content a:hover::before {
+  transform: translateX(-50%) translateY(0) rotate(0) scale(1);
+  opacity: 1;
+}
+
+.scroller .item:nth-child(12) .content a:hover::after {
+  transform: translateX(-50%) translateY(0) rotate(0);
+  opacity: 1;
+}
+
+/*item 2 looked weird on hover, so I fixed it with this*/
+.scroller .item:nth-child(12) .content a:nth-child(2):hover {
+  transform: translateX(-30px) translateY(calc(-100px - 8px)) scale(1.03);
+  z-index: 60;
+}
+
+/*---------------------------------------------------------------------------------*/
+
+/*scrolling length was off, so I fixed it with this*/
+.scroller-spacer {
+  width: 100%;
+  height: calc(0.4 * 100vh);
+  pointer-events: none;
+}
+/*---------------------------------------------------------------------------------*/
+
+/*--------------------------------Animation Effects--------------------------------*/
+/* pulsing glow animation for the heading */
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.45;
+    filter: blur(0.2px);
+    text-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+  }
+  12% {
+    opacity: 1;
+    filter: blur(0);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.95),
+      0 0 28px rgba(255, 255, 255, 0.55), 0 12px 30px rgba(255, 255, 255, 0.08);
+  }
+  36% {
+    opacity: 0.92;
+    filter: blur(0);
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.98),
+      0 0 36px rgba(255, 255, 255, 0.6), 0 16px 40px rgba(255, 255, 255, 0.06);
+  }
+  60% {
+    opacity: 0.48;
+    filter: blur(0.3px);
+    text-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    opacity: 0.45;
+    filter: blur(0.2px);
+    text-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+  }
+}
+/*-----------------------------------------------------------------------------*/
+
+/* finally done :'( */
+
+/* took way too long */
+
+/* only made for full screen though, will add media queries later */
